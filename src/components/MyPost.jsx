@@ -11,15 +11,7 @@ const MyPost = () => {
 
     const[result,changeResult]=useState([ ])
 
-    const fetchData=()=>{
-        axios.post("http://127.0.0.1:8000/api/view/").then(
-            (response)=>{
-                changeResult(response.data)
-            }
-        )
-    }
-
-    useEffect(()=>{fetchData()},[])
+   
 
     const inputHandler=(event)=>{
         changeInputField({...inputField,[event.target.name]:event.target.value})
@@ -28,9 +20,9 @@ const MyPost = () => {
 
     const readValue=()=>{
             console.log(inputField)
-            axios.post("",inputField).then(
+            axios.post("http://127.0.0.1:8000/api/view/",inputField).then(
                 (response)=>{
-                    alert(response.data)
+                    changeResult(response.data)
                 }
             )
     }
